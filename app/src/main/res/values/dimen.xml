@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="home_textsize">13dp</dimen>
+    <dimen name="login_margintop_image">20dp</dimen>
+    <dimen name="padding">5dp</dimen>
+    <dimen name="textview_rating">80dp</dimen>
+    <dimen name="home_margin_view">5dp</dimen>
+    <dimen name="home_margin_bottom">20dp</dimen>
+    <dimen name="home_margintop_heading">8dp</dimen>
+    <dimen name="home_margintop_view">10dp</dimen>
+    <dimen name="home_marginbottom_normal">25dp</dimen>
+    <dimen name="home_view_width">40dp</dimen>
+    <dimen name="home_view_height">2dp</dimen>
+    <dimen name="home_layout_margin_top">10dp</dimen>
+
+    <dimen name="myreview_rounded_view_diameter">30dp</dimen>
+    <dimen name="myreview_tablayout_hieght">30dp</dimen>
+    <dimen name="myreview_textview_margintop">10dp</dimen>
+    <dimen name="myreview_ratingbar_margintop">7dp</dimen>
+
+</resources>

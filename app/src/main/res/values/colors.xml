@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#355ac9</color>
+    <color name="colorPrimaryDark">#000000</color>
+    <color name="colorAccent">#60bd6a</color>
+
+    <color name="fade">#ffffff</color>
+    <color name="hint">#949393</color>
+    <color name="toolbar">#000000</color>
+    <color name="home_background">#e2e2e2</color>
+    <color name="main_green">#60bd6a</color>
+    <color name="red_alert">#dc2703</color>
+    <color name="leader_bg">#924ccc</color>
+</resources>

@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">Levler</string>
+    <string name="login_email_hint">Email or Phone</string>
+    <string name="login_password_hint">Password</string>
+    <string name="login_textview">Forgot password?</string>
+    <string name="login_button_signin">Sign in</string>
+    <string name="emailerror">Enter a valid email</string>
+    <string name="home_button_sendinvites">Send Invites</string>
+    <string name="home_textview_goals">GOAL</string>
+    <string name="home_textview_reviews">To reach your goal,we recomend sending at least</string>
+    <string name="home_progress">INVITE PROGESS (THIS MONTH)</string>
+    <string name="home_overall_rating">OVERALL RATING</string>
+    <string name="home_recent_reviews">RECENT REVIEWS</string>
+    <string name="home_top_leaders">TOP LEADERS</string>
+    <string name="home_total_reviews">TOTAL REVIEWS</string>
+    <string name="popup_heading">SEND REVIEW INVITATION</string>
+    <string name="popup_name">Customer Name</string>
+    <string name="multiple_dragbox">Upload or Drag your Attachment Files Here</string>
+    <string name="multiple_sample">First row must include header: Phone Number,Email,First Name,Last Name</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="home_button_allreviews">All Reviews</string>
+    <string name="home_button_allleaders">View All Leaders</string>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment1. Hello blank fragment1. Hello blank fragment1. Hello blank fragment1. Hello blank fragment1.</string>
+
+    <string name="hello_blank_fragment1">Hello blank fragment2</string>
+
+
+</resources>

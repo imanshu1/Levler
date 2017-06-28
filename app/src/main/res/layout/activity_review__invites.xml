@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.imanshu.levler.Review_Invites">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/review_invites_tool_bar"
+        android:background="@color/toolbar"
+        android:layout_width="match_parent"
+        app:theme="@style/Base.ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:layout_height="wrap_content">
+
+        </android.support.v7.widget.Toolbar>
+
+    <android.support.v4.view.ViewPager
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/review_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="net.voidynullness.android.tabitytabs.PagerTabStripActivity">
+
+
+    <android.support.design.widget.TabLayout
+        style="@style/MyTabLayout"
+        app:tabSelectedTextColor="@color/fade"
+        android:background="@color/leader_bg"
+        app:tabTextColor="@color/hint"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/myreview_tablayout_hieght"
+        />
+
+    </android.support.v4.view.ViewPager>
+
+</LinearLayout>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.imanshu.levler.Leader_board">
+    <android.support.v7.widget.Toolbar
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:id="@+id/leaderboard_toolbar"
+        android:background="@color/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </android.support.v7.widget.Toolbar>
+
+    <RelativeLayout
+        android:background="@color/leader_bg"
+        android:layout_width="match_parent"
+        android:layout_height="145dp">
+
+        <LinearLayout
+            android:layout_marginLeft="22dp"
+            android:id="@+id/Linear_layout1"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/fade"
+                android:id="@+id/leaderboard_textview_invitessent"
+                android:textSize="45dp"
+                android:text="44"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:textColor="@color/fade"
+                android:text="Invites Sent"
+                android:textSize="@dimen/home_textsize"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+       <LinearLayout
+           android:layout_marginRight="22dp"
+           android:id="@+id/Linear_layout2"
+           android:layout_centerVertical="true"
+           android:layout_alignParentRight="true"
+           android:orientation="vertical"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content">
+        <TextView
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/fade"
+            android:id="@+id/leaderboard_textview_reviewearned"
+            android:textSize="45dp"
+            android:text="22"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:textColor="@color/fade"
+            android:text="Reviews Earned"
+            android:textSize="@dimen/home_textsize"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+       </LinearLayout>
+
+
+        <com.example.imanshu.levler.RoundedImageView
+            android:src="@drawable/image_user"
+            android:layout_margin="20dp"
+            android:id="@+id/rounded_view"
+            android:layout_centerHorizontal="true"
+            android:layout_width="100dp"
+            android:layout_height="100dp" />
+
+
+    </RelativeLayout>
+
+    <android.support.v4.view.ViewPager
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="net.voidynullness.android.tabitytabs.PagerTabStripActivity">
+
+
+        <android.support.design.widget.TabLayout
+            android:layout_alignParentBottom="true"
+            style="@style/MyTabLayout"
+            app:tabSelectedTextColor="@color/fade"
+            android:background="@color/leader_bg"
+            app:tabTextColor="@color/hint"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            />
+
+        <!--<android.support.v4.view.PagerTabStrip-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="top"-->
+            <!--android:paddingBottom="10dp"-->
+            <!--android:paddingTop="10dp"-->
+            <!--android:background="@color/leader_bg"-->
+            <!--android:textColor="@color/fade" />-->
+
+    </android.support.v4.view.ViewPager>
+
+</LinearLayout>
