@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-    <com.example.imanshu.levler.RoundedImageView
+    <com.example.imanshu.levler.views.RoundedImageView
         android:src="@drawable/download"
         android:id="@+id/myreview_rounded_view"
         android:layout_width="@dimen/myreview_rounded_view_diameter"
@@ -22,7 +22,6 @@
     <TextView
         android:gravity="center"
         android:textSize="20dp"
-        android:layout_marginTop="3dp"
         android:id="@+id/myreview_name"
         android:layout_marginLeft="10dp"
         android:textColor="@color/toolbar"
@@ -32,18 +31,19 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent" />
 
-    <TextView
-        android:paddingBottom="3dp"
-        android:gravity="bottom"
-        android:text="972-911-8017"
-        android:layout_marginLeft="20dp"
-        android:id="@+id/myreview_phone"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_marginStart="20dp"
-         />
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/myreview_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
+            android:gravity="bottom"
+            android:paddingBottom="3dp"
+            android:text="972-911-8017" />
 
         <TextView
+            android:visibility="gone"
             android:paddingBottom="3dp"
             android:textAlignment="textEnd"
             android:gravity="bottom"
@@ -71,12 +71,22 @@
         android:layout_marginLeft="34dp"
         android:layout_marginStart="34dp" />
 
+    <TextView
+        android:id="@+id/myreviews_review_Text"
+        android:layout_marginTop="@dimen/myreview_textview_margintop"
+        android:layout_below="@+id/myreview_ratingbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/myreview_ratingbar"
+        android:layout_alignStart="@+id/myreview_ratingbar"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
     <com.borjabravo.readmoretextview.ReadMoreTextView
         android:text="@string/hello_blank_fragment"
         app:colorClickableText="@color/main_green"
         app:trimMode="trimModeLine"
-        app:trimLines="3"
-        android:visibility="visible"
+        android:visibility="gone"
         app:showTrimExpandedText="true"
         app:trimCollapsedText="Read More"
         app:trimExpandedText="Read Less"

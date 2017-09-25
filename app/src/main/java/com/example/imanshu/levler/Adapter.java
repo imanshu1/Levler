@@ -8,6 +8,7 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.borjabravo.readmoretextview.ReadMoreTextView;
+import com.example.imanshu.levler.views.RoundedImageView;
 
 import java.util.List;
 

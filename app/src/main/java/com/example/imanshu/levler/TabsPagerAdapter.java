@@ -13,7 +13,7 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
 
     final int PAGE_COUNT = 2;
     // Tab Titles
-    private String tabtitles[] = new String[] { "My-Review", "All-Review"};
+    private String tabtitles[] = new String[] { "Google", "Facebook"};
     Context context;
 
     public TabsPagerAdapter(FragmentManager fm) {

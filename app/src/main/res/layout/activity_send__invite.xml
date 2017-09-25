@@ -18,22 +18,56 @@
 
     </android.support.v7.widget.Toolbar>
 
-    <TextView
-        android:layout_marginTop="10dp"
-        android:gravity="center_horizontal"
-        android:text="South tampa Family and Cosmetic Dentistry"
-        android:textStyle="bold"
-        android:textSize="15dp"
+    <LinearLayout
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="10dp"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:padding="5dp"
+            android:src="@drawable/location"
+            android:layout_width="30dp"
+            android:layout_height="30dp" />
+
+        <TextView
+            android:textColor="@color/toolbar"
+            android:gravity="center"
+            android:id="@+id/sendinvites_location"
+            android:text="Next 57 coworking "
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+    <ProgressBar
+        android:visibility="gone"
+        android:id="@+id/progressBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <TextView
-        android:layout_marginTop="8dp"
+        android:visibility="gone"
+        android:id="@+id/send_invite_error"
         android:textSize="13dp"
+        android:textColor="@color/red_alert"
         android:gravity="center_horizontal"
         android:text="3308 S Dale Mabry Hwy,Tampa, FL 33629"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
+    <!--<Spinner-->
+        <!--android:layout_margin="30dp"-->
+        <!--android:id="@+id/spinner"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content">-->
+
+    <!--</Spinner>-->
+
 
     <LinearLayout
         android:layout_marginTop="10dp"
@@ -41,7 +75,7 @@
         android:layout_marginLeft="40dp"
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
@@ -93,4 +127,7 @@
             android:layout_height="wrap_content" />
 
     </LinearLayout>
+
+
+
 </LinearLayout>

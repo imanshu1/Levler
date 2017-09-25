@@ -8,16 +8,73 @@
     android:layout_height="match_parent"
     tools:context="com.example.imanshu.levler.Review_Invites">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/review_invites_tool_bar"
-        android:background="@color/toolbar"
+    <RelativeLayout
+        android:background="@color/main_green"
         android:layout_width="match_parent"
-        app:theme="@style/Base.ThemeOverlay.AppCompat.Dark.ActionBar"
-        android:layout_height="wrap_content">
+        android:layout_height="60dp">
 
-        </android.support.v7.widget.Toolbar>
+        <TextView
+            android:id="@+id/button_back"
+            android:textColor="@color/fade"
+            android:layout_marginLeft="10dp"
+            android:textSize="16dp"
+            android:layout_centerVertical="true"
+            android:text="Back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
-    <android.support.v4.view.ViewPager
+        <LinearLayout
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:background="@drawable/dotted_border"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp">
+
+            <TextView
+                android:background="@drawable/dotted_border"
+                android:id="@+id/tool_g"
+                android:gravity="center"
+                android:text="Google"
+                android:layout_width="100dp"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:background="@drawable/dotted_border"
+                android:id="@+id/tool_f"
+                android:gravity="center"
+                android:text="Facebook"
+                android:layout_width="100dp"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+
+
+
+    </RelativeLayout>
+
+
+    <!--<android.support.v7.widget.Toolbar-->
+        <!--android:id="@+id/review_invites_tool_bar"-->
+        <!--android:background="@color/main_green"-->
+        <!--android:layout_width="match_parent"-->
+        <!--app:theme="@style/Base.ThemeOverlay.AppCompat.Dark.ActionBar"-->
+        <!--android:layout_height="wrap_content">-->
+        <!---->
+
+    <!--</android.support.v7.widget.Toolbar>-->
+
+
+    <!--<android.support.v7.widget.Toolbar-->
+        <!--android:id="@+id/review_invites_tool_bar"-->
+        <!--android:background="@color/toolbar"-->
+        <!--android:layout_width="match_parent"-->
+        <!--app:theme="@style/Base.ThemeOverlay.AppCompat.Dark.ActionBar"-->
+        <!--android:layout_height="wrap_content">-->
+
+    <!--</android.support.v7.widget.Toolbar>-->
+
+
+    <com.example.imanshu.levler.views.NonSwipeableViewPager
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/review_pager"
@@ -26,15 +83,17 @@
         tools:context="net.voidynullness.android.tabitytabs.PagerTabStripActivity">
 
 
-    <android.support.design.widget.TabLayout
-        style="@style/MyTabLayout"
-        app:tabSelectedTextColor="@color/fade"
-        android:background="@color/leader_bg"
-        app:tabTextColor="@color/hint"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/myreview_tablayout_hieght"
-        />
+        <android.support.design.widget.TabLayout
+            android:visibility="gone"
+            style="@style/MyTabLayout"
+            app:tabSelectedTextColor="@color/toolbar"
+            android:background="@color/main_green"
+            app:tabTextColor="@color/hint"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/myreview_tablayout_hieght"
+            />
 
-    </android.support.v4.view.ViewPager>
+
+    </com.example.imanshu.levler.views.NonSwipeableViewPager>
 
 </LinearLayout>

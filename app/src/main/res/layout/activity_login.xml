@@ -6,13 +6,29 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.imanshu.levler.Login">
+    tools:context="com.example.imanshu.levler.activity.Login">
 
 <ImageView
     android:layout_marginTop="@dimen/login_margintop_image"
     android:src="@drawable/leveler_two_final"
     android:layout_width="match_parent"
     android:layout_height="120dp" />
+
+    <ProgressBar
+        android:visibility="gone"
+        android:id="@+id/progressBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:visibility="gone"
+        android:textColor="@color/red_alert"
+        android:gravity="center_horizontal"
+        android:text="enter valid address"
+        android:id="@+id/error"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <LinearLayout
         android:layout_margin="30dp"
@@ -68,7 +84,7 @@
             android:layout_marginTop="10dp"
             android:textColor="@color/colorPrimary"
             android:gravity="center_horizontal"
-            android:text="@string/login_textview"
+            android:text="Don't have an account ? Signup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 

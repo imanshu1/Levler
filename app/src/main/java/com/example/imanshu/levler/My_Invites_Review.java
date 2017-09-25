@@ -1,44 +1,45 @@
 package com.example.imanshu.levler;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
+import com.example.imanshu.levler.adapter.MyReviewsAdapter;
+import com.example.imanshu.levler.apiclient.Review_interface;
+import com.example.imanshu.levler.pojo.ResponseModel;
+import com.example.imanshu.levler.pojo.Reviews;
+
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
+
+import okhttp3.OkHttpClient;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
+import static android.content.Context.MODE_PRIVATE;
 
 
 public class My_Invites_Review extends Fragment {
 
     ListView myreviews_list;
     Adapter adapter1;
-    List<Getter_Setter> getterSetters;
 
-
-
-    String[] players = {"Vijay", "Prashant","Arun", "Dummy",  "Imanshu", "Nikhil"};
-
-    Float[] getRating={Float.valueOf(3),Float.valueOf(4),Float.valueOf(2),Float.valueOf(1), Float.valueOf(2),Float.valueOf(3)};
-
-    int[] images = {R.drawable.fb_logo, R.drawable.fb_logo, R.drawable.fb_logo, R.drawable.fb_logo, R.drawable.fb_logo, R.drawable.fb_logo};
-    String[] phone={"1234567890","9876543210","1598745632","1569874563","4563217890","8521479630"};
-
-    //String[] stat={null,"Invite Sent",null,null,null,null};
-
-    String[] reviews={"hii this is just a review for testing purpose please dont take it seriously",
-            null,
-            "hii this is just a review for testing purpose please dont take it seriously",
-            "hii this is just a review for testing purpose please dont take it seriously",
-            "hii this is just a review for testing purpose please dont take it seriously",
-            "hii this is just a review for testing purpose please dont take it seriously"};
-
-    ArrayList<HashMap<String, String>> data = new ArrayList<HashMap<String, String>>();
     SimpleAdapter adapter;
+
+    ListView reviews_List;
+    List<ResponseModel> responseList;
+    MyReviewsAdapter myReviewsAdapter;
+    SharedPreferences pref;
+    String token,location_id;
 
     int i = 0;
 
@@ -46,87 +47,58 @@ public class My_Invites_Review extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
+        pref=getActivity().getSharedPreferences("Options", MODE_PRIVATE);
+        token=pref.getString("token", "");
+        location_id=pref.getString("location_id","");
+
         View view =inflater.inflate(R.layout.fragment_my__invites__review, container, false);
-
-
         myreviews_list=(ListView)view.findViewById(R.id.my_invites_list);
-        getterSetters=new ArrayList<>();
 
-        getterSetters.add(new Getter_Setter("Vijay",R.drawable.fb_logo,"9729118017","this is just for testing purpose","done",Float.valueOf(3)));
-        getterSetters.add(new Getter_Setter("Imanshu",R.drawable.fb_logo,"9729118017","this is just for testing purpose","Pending",Float.valueOf(5)));
-        getterSetters.add(new Getter_Setter("Nikhil",R.drawable.fb_logo,"9729118017","this is just for testing purpose","done",Float.valueOf(4)));
-        getterSetters.add(new Getter_Setter("Arun",R.drawable.fb_logo,"9729118017","this is just for testing purpose","done",Float.valueOf(2)));
+        getgooglereviews();
 
-//        for (i=0;i<=getRating.length;i++)
-//        {
-//          if (getterSetters.get(i).getStatus()!="done")
-//          {
-//              ReadMoreTextView my=(ReadMoreTextView).findViewById(R.id.myreviews_review);
-//              my.setVisibility(View.GONE);
-//
-//          }
-//        }
-
-        adapter1=new Adapter(getActivity(),getterSetters);
-        myreviews_list.setAdapter(adapter1);
-
-        /////////////////////////////////////////////////////////////////
-//        HashMap<String, String> map = new HashMap<String, String>();
-//
-//
-//        for (i = 0; i < players.length; i++) {
-//            map = new HashMap<String, String>();
-//            map.put("Rating", String.valueOf(getRating[i]));
-//            map.put("Reviews", reviews[i]);
-//            if(reviews[i]!=null)
-//            {
-//                map.put("Status",null);
-//            }
-//            else{
-//                map.put("Status","Invite Sent");
-//            }
-//            map.put("PlayerA", players[i]);
-//
-//            map.put("Phone", phone[i]);
-//            map.put("ImageA", Integer.toString(images[i]));
-//            data.add(map);
-//        }
-//
-//        String[] from = {"PlayerA","Status","Rating","Reviews","Phone", "ImageA"};
-//
-////        for (i=0;i<=reviews.length;i++)
-////        {
-////            if (reviews[i]==null){
-////                TextView tt = (TextView)getActivity().findViewById(R.id.status);
-////                tt.setVisibility(VISIBLE);
-////            }
-//////            else{
-//////                ReadMoreTextView tt = (ReadMoreTextView) getActivity().findViewById(R.id.myreviews_review);
-//////                tt.setVisibility(View.GONE);
-//////            }
-////        }
-//
-//
-//        int[] to = {R.id.myreview_name,R.id.status,R.id.myreview_ratingbar,R.id.myreviews_review, R.id.myreview_phone,R.id.myreview_rounded_view};
-//
-////        if (from[3]==null) {
-////            ReadMoreTextView tt = (ReadMoreTextView) getActivity().findViewById(R.id.myreviews_review);
-////           // TextView st=(TextView)getActivity().findViewById(R.id.myreview_status);
-////           // st.setVisibility(View.VISIBLE);
-////            tt.setVisibility(View.GONE);
-////            setEmptyText("Your empty text");
-////
-////        }
-//
-//
-//        adapter = new SimpleAdapter(getActivity(), data, R.layout.inflate_myreview, from, to);
-//        adapter.setViewBinder(new MyBinder());
-//        setListAdapter(adapter);
-
-  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        // Inflate the layout for this fragment
         return view;
+    }
+
+
+
+    private void getgooglereviews() {
+
+        Reviews location_idModel=new Reviews(location_id);
+
+        responseList=new ArrayList<>();
+        myReviewsAdapter=new MyReviewsAdapter(getActivity(),responseList);
+
+        Retrofit.Builder builder = new Retrofit.Builder()
+                .baseUrl("https://app.levler.co/")
+                .client(new OkHttpClient())
+                .addConverterFactory(GsonConverterFactory.create());
+
+        Retrofit retrofit = builder.build();
+
+        Review_interface signup_interface=retrofit.create(Review_interface.class);
+
+        Call<Reviews> call=signup_interface.locationList(token);
+
+        call.enqueue(new Callback<Reviews>() {
+            @Override
+            public void onResponse(Call<Reviews> call, Response<Reviews> response) {
+
+                Log.i("responsecode",response.code()+"");
+
+                Reviews locationModel=response.body();
+                responseList = locationModel.getResponse();
+
+                myReviewsAdapter.addList((ArrayList<ResponseModel>) responseList);
+                myreviews_list.setAdapter(myReviewsAdapter);
+
+            }
+
+            @Override
+            public void onFailure(Call<Reviews> call, Throwable t) {
+
+            }
+        });
+
     }
 
 }

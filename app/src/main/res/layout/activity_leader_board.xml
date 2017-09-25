@@ -74,7 +74,7 @@
        </LinearLayout>
 
 
-        <com.example.imanshu.levler.RoundedImageView
+        <com.example.imanshu.levler.views.RoundedImageView
             android:src="@drawable/image_user"
             android:layout_margin="20dp"
             android:id="@+id/rounded_view"

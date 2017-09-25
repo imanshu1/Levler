@@ -6,6 +6,9 @@
         android:id="@+id/menu_home"
         android:title="Home"/>
     <item
+        android:id="@+id/menu_allinvites"
+        android:title="Sent Invites"/>
+    <item
         android:id="@+id/menu_policies"
         android:title="Policies"/>
     <item
