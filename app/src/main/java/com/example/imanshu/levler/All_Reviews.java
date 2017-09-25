@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.imanshu.levler.adapter.AllReview_Adapter;
 import com.example.imanshu.levler.apiclient.AllReviewInterface;
@@ -31,6 +32,7 @@ public class All_Reviews extends Fragment {
 
 
     ListView allreviews_list;
+    TextView fb_text;
 
     List<Message> messageList;
     AllReview_Adapter allReview_adapter;
@@ -47,6 +49,7 @@ public class All_Reviews extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_all__reviews, container, false);
         allreviews_list = (ListView) view.findViewById(R.id.allreviews_list);
+        fb_text=(TextView)view.findViewById(R.id.fb_text);
         getallreviews();
 
         return view;
@@ -80,12 +83,13 @@ public class All_Reviews extends Fragment {
                 if (response.code() == 400 || response.code() == 401){
 
                     allreviews_list.setVisibility(View.GONE);
+                    //fb_text.setVisibility(View.VISIBLE);
 
                 }
                 else {
+                    //fb_text.setVisibility(View.GONE);
                     FbReview locationModel=response.body();
                     messageList = locationModel.getMessage();
-
                     allReview_adapter.addList((ArrayList<Message>) messageList);
                     allreviews_list.setAdapter(allReview_adapter);
 

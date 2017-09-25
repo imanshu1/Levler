@@ -16,6 +16,6 @@ public interface Send_invite_interface {
 
     @Headers({"Content-Type: application/json"})
 
-    @POST("api/v1/employe_invites/create")
+    @POST("api/v1/employe_invites")
     Call<Send_Invites_Model> sendInvite(@Header("Authorization") String s,@Body Send_Invites_Model example);
 }

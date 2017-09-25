@@ -79,6 +79,7 @@
         android:text="@string/login_button_signin" />
 
         <TextView
+            android:visibility="gone"
             android:id="@+id/login_textview"
             android:textSize="18dp"
             android:layout_marginTop="10dp"

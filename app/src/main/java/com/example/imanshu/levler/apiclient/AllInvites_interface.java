@@ -15,6 +15,6 @@ public interface AllInvites_interface {
 
     @Headers({"Content-Type: application/json"})
 
-    @GET("api/v1/employe_invites/all_invites")
+    @GET("api/v1/employe_invites")
     Call<AllInvitesModel> invitesList(@Header("Authorization") String s);
 }

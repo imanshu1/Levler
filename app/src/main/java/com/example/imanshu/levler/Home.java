@@ -28,6 +28,7 @@ import android.widget.TextView;
 import com.example.imanshu.levler.activity.Login;
 import com.example.imanshu.levler.activity.Sent_Invites;
 import com.example.imanshu.levler.apiclient.AllReviewInterface;
+import com.example.imanshu.levler.apiclient.Location_number_Interface;
 import com.example.imanshu.levler.apiclient.Locationname_interface;
 import com.example.imanshu.levler.apiclient.Overall_Rating;
 import com.example.imanshu.levler.apiclient.Review_interface;
@@ -80,7 +81,7 @@ public class Home extends AppCompatActivity {
     Button home_button_allreviews;
 //    @Bind(R.id.home_button_allleaders)
 //    Button home_button_allleaders;
-    TextView inflate_textview;
+    TextView inflate_textview,review_location,rating_location;
 
     ListView home_list_reviews;
     List<ResponseModel> responseModelList;
@@ -111,6 +112,9 @@ public class Home extends AppCompatActivity {
         location_id=pref.getString("location_id", "");
         team_goal=pref.getString("team_goal", "");
         textview_progress_left.setText(team_goal);
+
+        review_location=(TextView)findViewById(R.id.review_location);
+        rating_location=(TextView)findViewById(R.id.rating_location);
         //location_id="62";
 
         home_layout_inflate=(LinearLayout)findViewById(R.id.home_layout_inflate);
@@ -119,6 +123,7 @@ public class Home extends AppCompatActivity {
         local_name();
         location();
         overallrating();
+        location_number();
 
 
         //////////////////////open navigation drawer////////////////////////////////////////
@@ -228,6 +233,34 @@ public class Home extends AppCompatActivity {
 
     }
 
+    private void location_number() {
+        Retrofit.Builder builder = new Retrofit.Builder()
+                .baseUrl("https://app.levler.co/")
+                .client(new OkHttpClient())
+                .addConverterFactory(GsonConverterFactory.create());
+
+        Retrofit retrofit = builder.build();
+
+        Location_number_Interface signup_interface=retrofit.create(Location_number_Interface.class);
+
+        Call<Location_Name> call=signup_interface.location_no(token);
+
+        call.enqueue(new Callback<Location_Name>() {
+            @Override
+            public void onResponse(Call<Location_Name> call, Response<Location_Name> response) {
+
+                review_location.setText("Out of "+response.body().getData()+" Locations");
+                rating_location.setText("Out of "+response.body().getData()+" Locations");
+
+            }
+
+            @Override
+            public void onFailure(Call<Location_Name> call, Throwable t) {
+
+            }
+        });
+    }
+
     private void progressApi() {
 
         Retrofit.Builder builder = new Retrofit.Builder()
@@ -252,12 +285,10 @@ public class Home extends AppCompatActivity {
 
                     textview_progress_done.setText(response.body().getData());
 
-                    int g = Integer.parseInt(response.body().getData());
-                    int y = Integer.parseInt(team_goal);
-
-                    int per = (g / y) * 100;
-
-                    progressBar.setProgress(per);
+//                    int g = Integer.parseInt(response.body().getData());
+//                    int y = Integer.parseInt(team_goal);
+//                    int per = (g / y) * 100;
+//                    progressBar.setProgress(per);
                 }
 
             }
